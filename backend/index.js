@@ -6,6 +6,8 @@ const { signupController } = require("./controllers/signup.controller");
 const { loginController } = require("./controllers/login.controller");
 const app = express();
 
+const port = process.env.PORT || 8000;
+
 app.use(cors());
 app.use(express.json());
 app.use("/signup", signupController);
@@ -15,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Home Page");
 });
 
-app.listen(process.env.PORT, async () => {
+app.listen(port, async () => {
   try {
     await connection;
     console.log("Connnected to db successfully");
